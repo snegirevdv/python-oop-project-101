@@ -12,6 +12,7 @@ python = ">=3.12,<4.0"
 # [tool.poetry.scripts]
 # package_name = "package_name.scripts.package_name:main"
 ruff = "^0.6.9"
+pytest = "^8.3.3"
 
 [build-system]
 requires = ["poetry-core"]
@@ -48,6 +49,9 @@ ignore = [
     "DTZ005",
     "E712",
     "S105",
+    "ANN002",
+    "ANN003",
+    "ANN401",
 ]
 unfixable = []
 flake8-quotes.inline-quotes = "single"

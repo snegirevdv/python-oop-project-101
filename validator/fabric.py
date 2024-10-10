@@ -1,13 +1,9 @@
-from validator.base import BaseValidator
-from validator.string import StringValidator
+from validator.schema import Schema
+from validator.validators import StringValidator
 
 
-class Validator:
-    def __init__(self) -> None:
-        pass
-
+class ValidatorFabric:
     def string(self) -> StringValidator:
-        return StringValidator()
-
-    def base(self) -> BaseValidator:
-        return BaseValidator()
+        schema = Schema()
+        schema.add_type(str)
+        return StringValidator(schema)
