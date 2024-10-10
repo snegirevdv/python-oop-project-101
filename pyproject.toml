@@ -1,0 +1,74 @@
+[tool.poetry]
+name = "hexlet-code"
+version = "0.1.0"
+description = ""
+authors = ["Denis <snegirev.dv@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "validator" }]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+
+# [tool.poetry.scripts]
+# package_name = "package_name.scripts.package_name:main"
+ruff = "^0.6.9"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = ["migrations", ".venv", ".ruff_cache"]
+indent-width = 4
+line-length = 79
+output-format = "grouped"
+respect-gitignore = true
+target-version = "py312"
+
+[tool.ruff.format]
+docstring-code-format = true
+line-ending = "auto"
+quote-style = "single"
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint]
+select = ['ALL']
+ignore = [
+    "T201",
+    "COM812",
+    "ISC001",
+    "D",
+    "N805",
+    "S101",
+    "RUF00",
+    "INP001",
+    "ERA001",
+    "F821",
+    "PGH003",
+    "DTZ005",
+    "E712",
+    "S105",
+]
+unfixable = []
+flake8-quotes.inline-quotes = "single"
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+combine-as-imports = true
+force-sort-within-sections = true
+known-first-party = ["app"]
+split-on-trailing-comma = false
+
+[tool.mypy]
+python_version = "3.12"
+exclude = ["migrations", ".venv", ".ruff_cache", ".mypy_cache", "__pycache__"]
+ignore_missing_imports = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+strict_optional = true
+warn_return_any = true
+warn_unused_configs = true
+follow_imports = "silent"
+show_column_numbers = true
+namespace_packages = true
