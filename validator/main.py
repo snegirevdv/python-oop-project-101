@@ -35,12 +35,12 @@ class BaseSchema:
         self.checks: dict[str, Callable] = {}
         self.type_name: str = 'all'
         self.is_required: bool = False
-        self.type_check: Callable | None = lambda _: True
-        self.required_check: Callable | None = lambda value: value is not None
+        self.type_check: Callable = lambda _: True
+        self.required_check: Callable = lambda value: value is not None
 
     def is_valid(self, value: Any) -> bool:
-        if self.is_required and not self.required_check(value):
-            return False
+        if not self.required_check(value):
+            return not self.is_required
 
         if not self.type_check(value):
             return False
@@ -117,7 +117,10 @@ class DictSchema(BaseSchema):
         return self
 
     def _validate_shape(self, value: Any) -> bool:
+        if not isinstance(value, dict):
+            return False
+
         return all(
-            schema.is_valid(value[key])
+            key in value and schema.is_valid(value[key])
             for key, schema in self.shape_validators.items()
         )
