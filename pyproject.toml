@@ -52,6 +52,7 @@ ignore = [
     "ANN002",
     "ANN003",
     "ANN401",
+    "RUF012",
 ]
 unfixable = []
 flake8-quotes.inline-quotes = "single"

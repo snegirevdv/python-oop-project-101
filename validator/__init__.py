@@ -1,3 +1,3 @@
-from validator.fabric import ValidatorFabric as Validator
+from validator.main import Validator
 
 __all__ = ('Validator',)
