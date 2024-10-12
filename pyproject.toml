@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{ include = "validator" }]
 
 [tool.poetry.dependencies]
-python = ">=3.12,<4.0"
+python = ">=3.11,<4.0"
 
 # [tool.poetry.scripts]
 # package_name = "package_name.scripts.package_name:main"
